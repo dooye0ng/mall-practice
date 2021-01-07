@@ -1,6 +1,6 @@
 package com.megait.shoppingmall.service;
 
-import com.megait.shoppingmall.Entity.Product;
+import com.megait.shoppingmall.entity.Product;
 import com.megait.shoppingmall.repository.ProductRepository;
 
 import javax.transaction.Transactional;

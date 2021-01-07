@@ -1,6 +1,6 @@
 package com.megait.shoppingmall.repository;
 
-import com.megait.shoppingmall.Entity.Product;
+import com.megait.shoppingmall.entity.Product;
 
 import java.util.List;
 

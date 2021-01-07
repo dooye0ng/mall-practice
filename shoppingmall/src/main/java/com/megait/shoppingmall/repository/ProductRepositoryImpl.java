@@ -1,8 +1,7 @@
 package com.megait.shoppingmall.repository;
 
-import com.megait.shoppingmall.Entity.Product;
+import com.megait.shoppingmall.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

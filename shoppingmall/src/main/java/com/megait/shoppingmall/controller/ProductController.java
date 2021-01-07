@@ -1,7 +1,6 @@
 package com.megait.shoppingmall.controller;
 
-import ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy;
-import com.megait.shoppingmall.Entity.Product;
+import com.megait.shoppingmall.entity.Product;
 import com.megait.shoppingmall.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
