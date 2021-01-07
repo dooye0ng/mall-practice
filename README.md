@@ -9,16 +9,16 @@
     ├── java
     │    ├── com.megait.shoppingmall
     │    │			├── config
-    |	 |			|	└── MallConfig.java
+    │    │			│	└── MallConfig.java
     │    │			├── controller
-    |	 |			|	├── ProductRepository.java
-    |	 |			|	└── ProductRepositoryImpl.java
+    │    │			│	├── ProductRepository.java
+    │    │			│	└── ProductRepositoryImpl.java
     │    │			├── entity
-    |	 |			|	└── Product.java
+    │    │			│	└── Product.java
     │    │			├── repository
-    |	 |			|	└── MallConfig.java
+    │    │			│	└── MallConfig.java
     │    │			└── service
-    |    |				└── ProductService.java
+    │    │				└── ProductService.java
     │    │
     │    └── ShoppingmallApplication.java
     │       
@@ -45,14 +45,13 @@
       - [ ] 바로 구매하기 버튼
 
 - `product-register.html` : 상품 등록을 위한 페이지
-
-  - ToDo
-
-    - [ ] 상품 정보를 입력한 후(Form) submit을 누르면 상품의 정보를 상품 테이블에 저장
+- ToDo
+  
+  - [ ] 상품 정보를 입력한 후(Form) submit을 누르면 상품의 정보를 상품 테이블에 저장
     - [ ] `registerProduct.do` : 상품 정보를 테이블에 저장하는 로직
-
-    - [ ] `registerProduct.do` : 상품 정보 저장
-
+  
+  - [ ] `registerProduct.do` : 상품 정보 저장
+  
 - ~~`product-payment.html`~~ : 장바구니에 담아 놓은 상품 ~~혹은 단일 상품~~을 구매하는 페이지
 
   - ToDo
