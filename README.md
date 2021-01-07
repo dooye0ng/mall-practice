@@ -8,17 +8,17 @@
   main
     ├── java
     │    ├── com.megait.shoppingmall
-    │    │   			├── config
-    |	 |				|		└── MallConfig.java
-    │    │   			├── controller
-    |	 |				|		├── ProductRepository.java
-    |	 |				|		└── ProductRepositoryImpl.java
-    │    │   			├── entity
-    |	 |				|		└── Product.java
-    │    │   			├── repository
-    |	 |				|		└── MallConfig.java
-    │    │   			└── service
-	|	 |						└── ProductService.java
+    │    │			├── config
+    |	 |			|	└── MallConfig.java
+    │    │			├── controller
+    |	 |			|	├── ProductRepository.java
+    |	 |			|	└── ProductRepositoryImpl.java
+    │    │			├── entity
+    |	 |			|	└── Product.java
+    │    │			├── repository
+    |	 |			|	└── MallConfig.java
+    │    │			└── service
+    |    |				└── ProductService.java
     │    │
     │    └── ShoppingmallApplication.java
     │       
