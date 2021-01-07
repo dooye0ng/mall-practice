@@ -36,14 +36,14 @@
 
 
 - ~~`product-list.html `~~ : 상품 조회를 위한 페이지
-- ToDo
-    - [x] ~~`list` : 모든 상품 정보를 조회해 `product-list.html`에게 넘겨줌~~
-    - [x] ~~상품 테이블을 조회해 상품들을 조회~~
-    - [x] ~~`cart.do` : 장바구니 담기 버튼 (쿠키 사용)~~
-  - Optional
-    - [ ] 품절 표시
-    - [ ] 바로 구매하기 버튼
-  
+    - ToDo
+        - [x] ~~`list` : 모든 상품 정보를 조회해 `product-list.html`에게 넘겨줌~~
+        - [x] ~~상품 테이블을 조회해 상품들을 조회~~
+        - [x] ~~`cart.do` : 장바구니 담기 버튼 (쿠키 사용)~~
+    - Optional
+      - [ ] 품절 표시
+      - [ ] 바로 구매하기 버튼
+
 - `product-register.html` : 상품 등록을 위한 페이지
 
   - ToDo
