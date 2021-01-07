@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Product Payment</title>
 </head>
 <body>
-    <h1>Product Payment</h1>
+    <h1>Product Payment (Cart)</h1>
+    <th:block th:each="product : ${productList}">
+        <h3 th:text="'상품 번호 : ' + ${product.id}"></h3>
+        <p th:text="'상품 이름 : ' + ${product.name}"></p>
+        <p th:text="'상품 정보 : ' + ${product.content}"></p>
+        <p th:text="'상품 수량 : ' + ${product.stock}"></p>
+        <p th:text="'상품 가격 : ' + ${product.price}"></p>
+        <button th:onclick="alert([[${product.name}]] + '를 장바구니에 담았습니다'); document.location='cart.do?id=' + [[${product.id}]] ;" th:text="${product.name} + '담기'"></button>
+    </th:block>
+    <h3 th:text="'상품 총 가격 : ' + ${totalPrice}"></h3>
+    <button th:text="${totalPrice} + ' 결제하기'"></button>
 </body>
 </html>

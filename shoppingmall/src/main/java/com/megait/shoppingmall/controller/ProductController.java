@@ -1,5 +1,6 @@
 package com.megait.shoppingmall.controller;
 
+import ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy;
 import com.megait.shoppingmall.Entity.Product;
 import com.megait.shoppingmall.service.ProductService;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -68,6 +70,8 @@ public class ProductController {
     @RequestMapping("register")
     public String productRegister(){
 
+        //////////////////////////////////////
+        // For Test
         Product product = new Product();
 
         product.setName("사과");
@@ -76,11 +80,40 @@ public class ProductController {
         product.setStock(10);
 
         productService.saveProduct(product);
+        ///////////////////////////////////////
         return "view/product-register";
     }
 
     @RequestMapping("payment")
-    public String productPayment(){
+    public String productPayment(HttpServletRequest req, Model model){
+        String cookieName;
+        String cookieValue;
+        int totalPrice = 0;
+
+        Cookie[] cookies = req.getCookies();
+        List<Product> productList = new ArrayList<>();
+        Product product = null;
+
+        if(cookies != null) {
+            for (Cookie cookie : cookies) {
+                cookieName = cookie.getName();
+                cookieValue = cookie.getValue();
+
+                if (cookieName.substring(0, 4).equals("cart")) {
+                    Long id = Long.parseLong(String.valueOf(cookieName.charAt(5)));
+
+                    product = productService.getProductById(id);
+                    logger.info(String.valueOf(id));
+                    product.setStock(Integer.parseInt(cookieValue));
+                    productList.add(product);
+                    totalPrice += product.getPrice();
+                }
+            }
+        }
+
+        model.addAttribute("productList", productList);
+        model.addAttribute("totalPrice", totalPrice);
+
         return "view/product-payment";
     }
 

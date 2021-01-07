@@ -27,4 +27,9 @@ public class ProductRepositoryImpl implements ProductRepository{
         List<Product> resultList = em.createQuery("SELECT p FROM Product p", Product.class).getResultList();
         return resultList;
     }
+
+    public Product getItemById(Long id){
+        Product product = em.find(Product.class, id);
+        return product;
+    }
 }
