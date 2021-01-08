@@ -45,17 +45,23 @@ public class ProductController {
     @RequestMapping("cart.do")
     public String cart(@RequestParam("id") int id,
                        HttpServletRequest req,
-                       HttpServletResponse resp){
+                       HttpServletResponse resp,
+                       Model model){
         Cookie[] cookies = req.getCookies();
+        Product product = productService.getProductById((long)id);
 
         if(cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("cart_" + String.valueOf(id))) {
                     int val = Integer.parseInt(cookie.getValue());
+                    if(product.getStock() <= val){
+                        model.addAttribute("errorMsg", "재고보다 더 주문할 수 없습니다.");
+                        return "view/product-home";
+                    }
                     cookie.setValue(String.valueOf(++val));
                     resp.addCookie(cookie);
                     logger.info(cookie.getName() + " " + String.valueOf(val));
-                    return "view/product-list";
+                    return "view/product-home";
                 }
             }
         }
@@ -63,7 +69,7 @@ public class ProductController {
         Cookie cookie = new Cookie("cart_" + id, "1");
         resp.addCookie(cookie);
 
-        return "view/product-list";
+        return "view/product-home";
     }
 
     @RequestMapping("register")
@@ -85,8 +91,6 @@ public class ProductController {
 
     @RequestMapping("payment")
     public String productPayment(HttpServletRequest req, Model model){
-        String cookieName;
-        String cookieValue;
         int totalPrice = 0;
 
         Cookie[] cookies = req.getCookies();
@@ -95,10 +99,10 @@ public class ProductController {
 
         if(cookies != null) {
             for (Cookie cookie : cookies) {
-                cookieName = cookie.getName();
-                cookieValue = cookie.getValue();
+                if (isCartCookie(cookie)) {
+                    String cookieValue = cookie.getValue();
+                    String cookieName = cookie.getName();
 
-                if (cookieName.substring(0, 4).equals("cart")) {
                     Long id = Long.parseLong(String.valueOf(cookieName.charAt(5)));
 
                     product = productService.getProductById(id);
@@ -115,5 +119,42 @@ public class ProductController {
 
         return "view/product-payment";
     }
+    private boolean isCartCookie(Cookie cookie){
+        String cookieName = cookie.getName();
 
+        if (!cookieName.startsWith("cart")){
+            return false;
+        }
+
+        return true;
+    }
+    @RequestMapping("pay.do")
+    public String pay(HttpServletRequest req, Model model, HttpServletResponse resp){
+        Cookie[] cookies = req.getCookies();
+        List<Product> productList = new ArrayList<>();
+        int totalPrice = 0;
+
+        for(Cookie cookie : cookies){
+            if(isCartCookie(cookie)){
+                String cookieName = cookie.getName();
+                String cookieValue = cookie.getValue();
+                Long id = Long.parseLong(String.valueOf(cookieName.charAt(5)));
+
+                Product product = productService.getProductById(id);
+                product.setStock(Integer.parseInt(cookieValue));
+                productList.add(product);
+                productService.sellProduct(product);
+
+                totalPrice += product.getPrice();
+                cookie.setMaxAge(0);
+                resp.addCookie(cookie);
+                logger.info(String.valueOf(cookie.getMaxAge()));
+            }
+        }
+
+        model.addAttribute("productList",productList);
+        model.addAttribute("totalPrice", totalPrice);
+
+        return "/view/product-payment-result";
+    }
 }

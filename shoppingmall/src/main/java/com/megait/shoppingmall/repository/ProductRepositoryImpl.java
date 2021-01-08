@@ -29,6 +29,15 @@ public class ProductRepositoryImpl implements ProductRepository{
 
     public Product getItemById(Long id){
         Product product = em.find(Product.class, id);
+        em.detach(product);
         return product;
+    }
+
+    public void sellItem(Product product){
+        Product item = em.find(Product.class, product.getId());
+        int stock = item.getStock() - product.getStock();
+        System.out.println("=================================================");
+        System.out.println("stock : " + item.getStock() + " " + product.getStock());
+        item.setStock(stock);
     }
 }

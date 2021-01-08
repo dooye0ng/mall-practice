@@ -15,7 +15,13 @@
         <p th:text="'상품 가격 : ' + ${product.price}"></p>
         <button th:onclick="alert([[${product.name}]] + '를 장바구니에 담았습니다'); document.location='cart.do?id=' + [[${product.id}]] ;" th:text="${product.name} + '담기'"></button>
     </th:block>
-    <h3 th:text="'상품 총 가격 : ' + ${totalPrice}"></h3>
-    <button th:text="${totalPrice} + ' 결제하기'"></button>
+    <th:block th:if="${totalPrice} > 0">
+        <h3 th:text="'상품 총 가격 : ' + ${totalPrice}"></h3>
+        <button th:text="${totalPrice} + ' 결제하기'" onclick="document.location='pay.do'"></button>
+    </th:block>
+
+    <th:block th:unless="${totalPrice} > 0">
+        <h3> 장바구니 비어있음 </h3>
+    </th:block>
 </body>
 </html>

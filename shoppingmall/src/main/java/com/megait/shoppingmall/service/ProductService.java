@@ -25,4 +25,7 @@ public class ProductService {
     public Product getProductById(Long id){
         return productRepository.getItemById(id);
     }
+    public void sellProduct(Product product){
+        productRepository.sellItem(product);
+    }
 }

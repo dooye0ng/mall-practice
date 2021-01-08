@@ -8,4 +8,5 @@ public interface ProductRepository {
     public Product save(Product product);
     public List<Product> getAllItems();
     public Product getItemById(Long id);
+    public void sellItem(Product product);
 }

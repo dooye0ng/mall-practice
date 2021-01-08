@@ -29,6 +29,7 @@
              		├── product-home.html
                		├── product-list.html
                		├── product-payment.html
+               		├── product-payment-result.html
                		└── product-register.html
  
 ```
@@ -41,17 +42,14 @@
         - [x] ~~상품 테이블을 조회해 상품들을 조회~~
         - [x] ~~`cart.do` : 장바구니 담기 버튼 (쿠키 사용)~~
     - Optional
-      - [ ] 품절 표시
-      - [ ] 바로 구매하기 버튼
-
+      - [x] 품절 표시
+    
 - `product-register.html` : 상품 등록을 위한 페이지
-- ToDo
-  
-  - [ ] 상품 정보를 입력한 후(Form) submit을 누르면 상품의 정보를 상품 테이블에 저장
-    - [ ] `registerProduct.do` : 상품 정보를 테이블에 저장하는 로직
-  
-  - [ ] `registerProduct.do` : 상품 정보 저장
-  
+    - ToDo
+      - [ ] 상품 정보를 입력한 후(Form) submit을 누르면 상품의 정보를 상품 테이블에 저장
+      - [ ] `registerProduct.do` : 상품 정보를 테이블에 저장하는 로직
+      - [ ] `registerProduct.do` : 상품 정보 저장
+
 - ~~`product-payment.html`~~ : 장바구니에 담아 놓은 상품 ~~혹은 단일 상품~~을 구매하는 페이지
 
   - ToDo
@@ -61,17 +59,16 @@
   - Optional
     - [ ] ***현재 로그인한 회원정보 (박기선님)*** 와 잔액(포인트(?))을 표시함 
 
-- `buyProduct.do`
-  
+- ~~`pay.do`~~ : 장바구니에 담아놓은 물건들 결제
   - ToDo
     
-    - [ ] 회원정보(박기선님)와 장바구니 정보(임동진님)를 받아 결제를 진행하는 로직
+    - [x] ~~장바구니 정보를 받아 결제를 진행하는 로직~~
     
-    - [ ] 상품 재고를 주문 개수만큼 감소
+    - [x] ~~상품 재고를 주문 개수만큼 감소~~
     
   - Optional
   
-    - [ ] 회원의 잔고에서 상품 가치만큼 감소
+    - [ ] ***현재 로그인한 회원 (박기선님)***의 잔고에서 상품 가치만큼 감소
 
 ## DataBase : H2 (Temporary)
 

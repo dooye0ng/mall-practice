@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Payment</title>
+</head>
+<body>
+    <h1>Product Payment Result</h1>
+    <th:block th:each="product : ${productList}">
+        <p th:text="'[' + ${product.id} + '] ' + ${product.name} + ' ' + ${product.stock} + ' 개'"></p>
+    </th:block>
+    <h3 th:text="'상품 총 가격 : ' + ${totalPrice} + '원 결제 완료 !'"></h3>
+    <button onclick="document.location='/product/'">홈으로</button>
+</body>
+</html>
